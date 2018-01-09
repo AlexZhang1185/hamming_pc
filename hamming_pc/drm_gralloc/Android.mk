@@ -72,6 +72,8 @@ ifneq ($(filter $(intel_drivers), $(DRM_GPU_DRIVERS)),)
 LOCAL_SRC_FILES += gralloc_drm_intel.c
 LOCAL_CFLAGS += -DENABLE_INTEL
 LOCAL_SHARED_LIBRARIES += libdrm_intel
+LOCAL_C_INCLUDES += \
+    external/libdrm/intel
 endif
 
 ifneq ($(filter $(radeon_drivers), $(DRM_GPU_DRIVERS)),)
@@ -94,7 +96,7 @@ LOCAL_C_INCLUDES += \
 	external/mesa/include \
 	external/mesa/src \
 	external/mesa/src/gallium/include \
-	external/mesa/src/gallium/auxiliary
+	external/mesa/src/gallium/auxiliary \
 
 
 LOCAL_SHARED_LIBRARIES += libdl
