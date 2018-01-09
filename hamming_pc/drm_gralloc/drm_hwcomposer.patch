@@ -1,0 +1,26 @@
+diff --git a/drmresources.cpp b/drmresources.cpp
+index e433239..8b1f75e 100644
+--- a/drmresources.cpp
++++ b/drmresources.cpp
+@@ -61,7 +61,7 @@ int DrmResources::Init() {
+ 
+   ret = drmSetClientCap(fd(), DRM_CLIENT_CAP_ATOMIC, 1);
+   if (ret) {
+-    ALOGE("Failed to set atomic cap %d", ret);
++    ALOGE("Failed to set atomic cap %d, errno: %d", ret, errno);
+     return ret;
+   }
+ 
+diff --git a/hwcomposer.cpp b/hwcomposer.cpp
+index b2e9643..65190a7 100644
+--- a/hwcomposer.cpp
++++ b/hwcomposer.cpp
+@@ -913,7 +913,7 @@ static int hwc_device_open(const struct hw_module_t *module, const char *name,
+ 
+   int ret = ctx->drm.Init();
+   if (ret) {
+-    ALOGE("Can't initialize Drm object %d", ret);
++    ALOGE("Can't initialize Drm object %di, errno: %d", ret, errno);
+     return ret;
+   }
+ 

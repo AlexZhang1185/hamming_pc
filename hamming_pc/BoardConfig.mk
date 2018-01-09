@@ -17,14 +17,24 @@ TARGET_2ND_ARCH_VARIANT := x86
 
 TARGET_USES_64_BIT_BINDER := true
 
-SMALLER_FONT_FOOTPRINT := true
-MINIMAL_FONT_FOOTPRINT := true
+TARGET_KERNEL_SOURCE := kernel/linux
+TARGET_KERNEL_CONFIG := x86_64_defconfig
+TARGET_KERNEL_ARCH := $(TARGET_ARCH)
+BOARD_KERNEL_IMAGE_NAME := bzImage
+
+#SMALLER_FONT_FOOTPRINT := true
+#MINIMAL_FONT_FOOTPRINT := true
 # Disable emulator for "make dist" until there is a 64-bit qemu kernel
 BUILD_EMULATOR := false
 # Some framework code requires this to enable BT
 BOARD_HAVE_BLUETOOTH := false
 
+TARGET_BOARD_PLATFORM := drm
+BOARD_GPU_DRIVERS := i915
 USE_OPENGL_RENDERER := true
+BOARD_EGL_CFG := device/hamming/hamming_pc/egl/egl.cfg
+
+BOARD_USES_DRM_HWCOMPOSER := true
 
 BOARD_USE_LEGACY_UI := true
 
